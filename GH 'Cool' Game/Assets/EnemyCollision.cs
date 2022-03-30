@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+        [SerializeField] int amountToIncrease = 1;
+
+        ScoreManager scoreManager;
+        PlayerSoulChanger playerSoulChanger;
+    
+    void Start() 
     {
-        
+        scoreManager = FindObjectOfType<ScoreManager>();
+        playerSoulChanger = FindObjectOfType<PlayerSoulChanger>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnCollisionEnter(Collision other) 
     {
+        
+        Debug.Log("big collision");
+        scoreManager.IncreaseScore(amountToIncrease);
+        playerSoulChanger.IncreaseLightSizeAndBrighness();
+        Destroy(gameObject);
         
     }
 }
