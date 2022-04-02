@@ -18,13 +18,11 @@ public class ScoreManager : MonoBehaviour
     {
         score += amountToIncrease;
         scoreText.text = "Souls Collected: " + score.ToString();
-        Debug.Log(score);
     }
 
     public void DecreaseScore(int amountToDecrease)
     {
         score -= amountToDecrease;
         scoreText.text = "Souls Collected: " + score.ToString();
-        Debug.Log(score);
     }
 }

@@ -1,34 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GateManager : MonoBehaviour
 {
-    [SerializeField] int requiredSouls = 10;
+    [SerializeField] public int requiredSouls = 10;
 
-    bool enoughSouls = false;
+    [SerializeField] TextMeshProUGUI interactMessage;
+    [SerializeField] TextMeshProUGUI doorReqMesage;
 
     ScoreManager scoreManager;
-    
+    PlayerSoulChanger playerSoulChanger;
+    Animator animator;
+    BoxCollider gateTrigger;
+
+    public bool enoughSouls = false;
+
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
+        playerSoulChanger = FindObjectOfType<PlayerSoulChanger>();
+        gateTrigger = GetComponent<BoxCollider>();
+        animator = GetComponent<Animator>();
+
+        doorReqMesage.enabled = false;
+        interactMessage.enabled = false;
     }
 
     void Update()
     {
         if(enoughSouls)
-        {
-            Debug.Log("Press 'E' to Open");
-            PushToOpen();
-        } 
+            {
+                interactMessage.enabled = true;
+                PushToOpen();
+            } 
     }
     
-    void OnTriggerEnter(Collider other) 
+    void OnTriggerStay(Collider other) 
     {        
-        Debug.Log("The Gate Requires A Part Of You");
+        doorReqMesage.enabled = true;
 
-        if(scoreManager.score == requiredSouls)
+        if(scoreManager.score >= requiredSouls)
         {
             enoughSouls = true;
         }
@@ -36,10 +49,15 @@ public class GateManager : MonoBehaviour
 
     void PushToOpen()
     {
-        
         if(Input.GetKeyDown(KeyCode.E))
         {
             scoreManager.DecreaseScore(requiredSouls);
+            playerSoulChanger.DecreaseLightSizeAndBrighness();
+            playerSoulChanger.DecreaseSphereSize();
+            animator.Play("OpenGate",0);
+            gateTrigger.enabled = false;
+            doorReqMesage.enabled = false;
+            interactMessage.enabled = false;
             enoughSouls = false;
         }
     }

@@ -17,8 +17,6 @@ public class EnemyCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision other) 
     {
-        
-        Debug.Log("big collision");
         scoreManager.IncreaseScore(amountToIncrease);
         
         playerSoulChanger.IncreaseLightSizeAndBrighness();
