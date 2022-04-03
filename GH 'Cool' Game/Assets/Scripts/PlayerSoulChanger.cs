@@ -40,7 +40,7 @@ public class PlayerSoulChanger : MonoBehaviour
     public void DecreaseSphereSize()
     {
         float innerSphereSizeDecrease = innerSphereSizeIncrease * gateManager.requiredSouls;
-        innerSphere.localScale = innerSphere.localScale + new Vector3(innerSphereSizeDecrease, innerSphereSizeDecrease, innerSphereSizeDecrease);
+        innerSphere.localScale = innerSphere.localScale - new Vector3(innerSphereSizeDecrease, innerSphereSizeDecrease, innerSphereSizeDecrease);
     }
 }
  

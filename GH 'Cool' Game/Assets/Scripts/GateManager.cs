@@ -30,11 +30,7 @@ public class GateManager : MonoBehaviour
 
     void Update()
     {
-        if(enoughSouls)
-            {
-                interactMessage.enabled = true;
-                PushToOpen();
-            } 
+    
     }
     
     void OnTriggerStay(Collider other) 
@@ -45,6 +41,17 @@ public class GateManager : MonoBehaviour
         {
             enoughSouls = true;
         }
+        if(enoughSouls)
+        {
+            interactMessage.enabled = true;
+            PushToOpen();
+        }
+    }
+
+    void OnTriggerExit(Collider other) 
+    {
+        doorReqMesage.enabled = false;
+        interactMessage.enabled = false;
     }
 
     void PushToOpen()
