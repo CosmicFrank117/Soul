@@ -2543,7 +2543,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1182739932162277700, guid: 9536ab141f3aac041ad2807869832e4c, type: 3}
       propertyPath: m_Name
-      value: EnenySoul
+      value: EnemySoul
       objectReference: {fileID: 0}
     - target: {fileID: 7590100741259293958, guid: 9536ab141f3aac041ad2807869832e4c, type: 3}
       propertyPath: m_RootOrder
@@ -2555,7 +2555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7590100741259293958, guid: 9536ab141f3aac041ad2807869832e4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0000019073486
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7590100741259293958, guid: 9536ab141f3aac041ad2807869832e4c, type: 3}
       propertyPath: m_LocalPosition.z

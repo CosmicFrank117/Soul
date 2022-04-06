@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SoulCollision : MonoBehaviour
 {
-        [SerializeField] int amountToIncrease = 1;
+    [SerializeField] int amountToIncrease = 1;
 
-        ScoreManager scoreManager;
-        PlayerSoulChanger playerSoulChanger;
-    
+    ScoreManager scoreManager;
+    PlayerSoulChanger playerSoulChanger;
+
     void Start() 
     {
         scoreManager = FindObjectOfType<ScoreManager>();
