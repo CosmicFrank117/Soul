@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7590100741259293958}
   - component: {fileID: 3922962835357097376}
   - component: {fileID: 3954995802462001930}
+  - component: {fileID: 2054133328926601842}
+  - component: {fileID: 4342092839384675337}
   m_Layer: 0
   m_Name: EnemySoul
   m_TagString: Untagged
@@ -45,7 +47,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3954995802462001930
 MonoBehaviour:
@@ -60,6 +62,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountToDecrease: 3
+--- !u!195 &2054133328926601842
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182739932162277700}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &4342092839384675337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182739932162277700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85d4c78f090af4468b721f25d3679d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  chaseRange: 2
+  turnSpeed: 5
 --- !u!1 &2221250900371510951
 GameObject:
   m_ObjectHideFlags: 0
