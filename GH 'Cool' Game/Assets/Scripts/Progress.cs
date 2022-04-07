@@ -5,13 +5,20 @@ using UnityEngine;
 public class Progress : MonoBehaviour
 {
     [SerializeField] float camMoveDistance = 18f;
+    [SerializeField] float camVelocity = 10f;
     [SerializeField] Collider player;
 
     Camera cam;
-    
+    Rigidbody rb;
+
     void Start() 
     {
         cam = FindObjectOfType<Camera>();
+        rb = cam.GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
     }
 
     void OnTriggerEnter(Collider other) 
@@ -22,7 +29,6 @@ public class Progress : MonoBehaviour
             
             CloseGate();
 
-            
             MoveCamera();
         }
     }
@@ -34,6 +40,6 @@ public class Progress : MonoBehaviour
 
     void MoveCamera()
     {
-        cam.transform.Translate(Vector3.forward * camMoveDistance, Space.World);
+        rb.AddForce(Vector3.forward * camVelocity);
     }
 }
