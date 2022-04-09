@@ -11,11 +11,9 @@ public class PlayerSoulChanger : MonoBehaviour
 
     Light lightSettings;
     Transform innerSphere;
-    GateManager gateManager;
 
     void Start() 
     {
-        gateManager = FindObjectOfType<GateManager>();
         lightSettings = GetComponentInChildren<Light>();
         innerSphere = gameObject.GetComponentInChildren<Transform>().transform;
     }
@@ -31,15 +29,15 @@ public class PlayerSoulChanger : MonoBehaviour
         innerSphere.localScale = innerSphere.localScale + new Vector3(innerSphereSizeIncrease,innerSphereSizeIncrease,innerSphereSizeIncrease);
     }
 
-    public void DecreaseLightSizeAndBrighness()
+    public void DecreaseLightSizeAndBrighness(int requiredSouls)
     {
-        lightSettings.range -= lightRangeIncreaseAmount * gateManager.requiredSouls;
-        lightSettings.intensity -= lightIntensityIncreaseAmount * gateManager.requiredSouls;
+        lightSettings.range -= lightRangeIncreaseAmount * requiredSouls;
+        lightSettings.intensity -= lightIntensityIncreaseAmount * requiredSouls;
     }
     
-    public void DecreaseSphereSize()
+    public void DecreaseSphereSize(int requiredSouls)
     {
-        float innerSphereSizeDecrease = innerSphereSizeIncrease * gateManager.requiredSouls;
+        float innerSphereSizeDecrease = innerSphereSizeIncrease * requiredSouls;
         innerSphere.localScale = innerSphere.localScale - new Vector3(innerSphereSizeDecrease, innerSphereSizeDecrease, innerSphereSizeDecrease);
     }
 }

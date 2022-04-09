@@ -19,8 +19,8 @@ public class EnemyCollision : MonoBehaviour
     {
         scoreManager.DecreaseScore(amountToDecrease);
         
-        playerSoulChanger.DecreaseLightSizeAndBrighness();
-        playerSoulChanger.DecreaseSphereSize();
+        playerSoulChanger.DecreaseLightSizeAndBrighness(amountToDecrease);
+        playerSoulChanger.DecreaseSphereSize(amountToDecrease);
         
         Destroy(gameObject);
     }

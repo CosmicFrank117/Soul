@@ -28,11 +28,6 @@ public class GateManager : MonoBehaviour
         interactMessage.enabled = false;
     }
 
-    void Update()
-    {
-    
-    }
-    
     void OnTriggerStay(Collider other) 
     {        
         doorReqMesage.enabled = true;
@@ -59,8 +54,8 @@ public class GateManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             scoreManager.DecreaseScore(requiredSouls);
-            playerSoulChanger.DecreaseLightSizeAndBrighness();
-            playerSoulChanger.DecreaseSphereSize();
+            playerSoulChanger.DecreaseLightSizeAndBrighness(requiredSouls);
+            playerSoulChanger.DecreaseSphereSize(requiredSouls);
             animator.Play("OpenGate",0);
             gateTrigger.enabled = false;
             doorReqMesage.enabled = false;
