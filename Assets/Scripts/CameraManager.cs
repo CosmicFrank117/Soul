@@ -6,42 +6,66 @@ public class CameraManager : MonoBehaviour
 {
     public Camera cam;
     public Transform[] cameraPositions;
-    public NextRoomTrigger[] cameraTriggers;
+    public List<NextRoomTrigger> cameraTriggers;
     
     public float camSpeed;
+
+    private int targetCam = 0;
+
+    private bool isTriggered;
     
-    private void OnTriggerEnter(Collider other) 
-    {
-        
-    }
     
     void Start()
     {
-        
+
     }
 
     
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (cameraTriggers[targetCam].isTriggered)
         {
-            StartCoroutine(MoveCamera());
+            isTriggered = true;
+            //StartCoroutine(MoveCamera(targetCamPos));
+            while (cam.transform.position != cameraPositions[targetCam].position)
+            {
+                float step = camSpeed * Time.deltaTime;
+                cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPositions[targetCam].position, step);
+
+                if (Vector3.Distance(cam.transform.position, cameraPositions[targetCam].position) < 0.01f)
+                {
+                    cam.transform.position = cameraPositions[targetCam].position;
+                    cameraTriggers[targetCam].isTriggered = isTriggered = false;
+                    Destroy(cameraTriggers[targetCam]);
+                    cameraTriggers.Remove(cameraTriggers[targetCam]);
+
+
+                }
+            }
         }
     }
 
-    IEnumerator MoveCamera()
+    IEnumerator MoveCamera(int targetCam)
     {
-        while (cam.transform.position != cameraPositions[0].position)
+      
+        
+        while (cam.transform.position != cameraPositions[targetCam].position)
+        {
+            float step = camSpeed * Time.deltaTime;
+            cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPositions[targetCam].position, step);
+
+            if (Vector3.Distance(cam.transform.position, cameraPositions[targetCam].position) < 0.01f)
             {
-                float step = camSpeed * Time.deltaTime;
-                cam.transform.position = Vector3.MoveTowards(cam.transform.position,cameraPositions[0].position,step);
+                cam.transform.position = cameraPositions[targetCam].position;
+                cameraTriggers[targetCam].isTriggered = isTriggered = false;
+                Destroy(cameraTriggers[targetCam]);
+                cameraTriggers.Remove(cameraTriggers[targetCam]);
                 
-                if (Vector3.Distance(cam.transform.position, cameraPositions[0].position) < 0.01f)
-                {
-                    cam.transform.position = cameraPositions[0].position;
-                }
-                yield return new WaitForEndOfFrame();
+
             }
+            yield return new WaitForEndOfFrame();
+        }
+        
     }
 }

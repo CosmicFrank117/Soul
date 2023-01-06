@@ -11,6 +11,8 @@ public class NextRoomTrigger : MonoBehaviour
     Camera cam;
     Rigidbody rb;
 
+    public bool isTriggered = false;
+
     void Start() 
     {
         cam = FindObjectOfType<Camera>();
@@ -27,7 +29,8 @@ public class NextRoomTrigger : MonoBehaviour
             
             StopPlayerControls();
 
-            MoveCamera();
+            isTriggered = true;
+            
         }
     }
 
@@ -41,9 +44,8 @@ public class NextRoomTrigger : MonoBehaviour
         player.GetComponent<PlayerMovement>().enabled = false;
     }
 
-    void MoveCamera()
+    private void OnDestroy()
     {
-        rb.AddForce(Vector3.forward * camVelocity, ForceMode.VelocityChange);
-        
+        player.GetComponent<PlayerMovement>().enabled = true;
     }
 }
