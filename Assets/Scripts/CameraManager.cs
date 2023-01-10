@@ -11,45 +11,24 @@ public class CameraManager : MonoBehaviour
     public float camSpeed;
 
     private int targetCam = 0;
-
-    private bool isTriggered;
-    
-    
-    void Start()
-    {
-
-    }
-
     
     void Update()
     {
 
         if (cameraTriggers[targetCam].isTriggered)
         {
-            isTriggered = true;
-            //StartCoroutine(MoveCamera(targetCamPos));
-            while (cam.transform.position != cameraPositions[targetCam].position)
+            StartCoroutine(MoveCamera(targetCam));
+            
+            if (targetCam < cameraPositions.Length - 1)
             {
-                float step = camSpeed * Time.deltaTime;
-                cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPositions[targetCam].position, step);
-
-                if (Vector3.Distance(cam.transform.position, cameraPositions[targetCam].position) < 0.01f)
-                {
-                    cam.transform.position = cameraPositions[targetCam].position;
-                    cameraTriggers[targetCam].isTriggered = isTriggered = false;
-                    Destroy(cameraTriggers[targetCam]);
-                    cameraTriggers.Remove(cameraTriggers[targetCam]);
-
-
-                }
+                targetCam++;
             }
+                
         }
     }
 
     IEnumerator MoveCamera(int targetCam)
     {
-      
-        
         while (cam.transform.position != cameraPositions[targetCam].position)
         {
             float step = camSpeed * Time.deltaTime;
@@ -58,14 +37,16 @@ public class CameraManager : MonoBehaviour
             if (Vector3.Distance(cam.transform.position, cameraPositions[targetCam].position) < 0.01f)
             {
                 cam.transform.position = cameraPositions[targetCam].position;
-                cameraTriggers[targetCam].isTriggered = isTriggered = false;
-                Destroy(cameraTriggers[targetCam]);
-                cameraTriggers.Remove(cameraTriggers[targetCam]);
-                
+                cameraTriggers[targetCam].isTriggered = false;
 
+                if (targetCam == cameraTriggers.Count - 1)
+                {
+                    GetComponent<YouWin>().EnableWinText();
+                }
+
+                Destroy(cameraTriggers[targetCam]);
             }
             yield return new WaitForEndOfFrame();
         }
-        
     }
 }

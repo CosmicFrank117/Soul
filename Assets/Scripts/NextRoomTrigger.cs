@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class NextRoomTrigger : MonoBehaviour
 {
-    [SerializeField] float camVelocity = 10f;
     [SerializeField] GameObject player;
     [SerializeField] Animator gateAnimator;
 
-    Camera cam;
-    Rigidbody rb;
-
     public bool isTriggered = false;
-
-    void Start() 
-    {
-        cam = FindObjectOfType<Camera>();
-        rb = cam.GetComponent<Rigidbody>();
-    }
 
     void OnTriggerEnter(Collider other) 
     {
@@ -30,7 +20,6 @@ public class NextRoomTrigger : MonoBehaviour
             StopPlayerControls();
 
             isTriggered = true;
-            
         }
     }
 
@@ -46,6 +35,6 @@ public class NextRoomTrigger : MonoBehaviour
 
     private void OnDestroy()
     {
-        player.GetComponent<PlayerMovement>().enabled = true;
+        if (player) player.GetComponent<PlayerMovement>().enabled = true;
     }
 }

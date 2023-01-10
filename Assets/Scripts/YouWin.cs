@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class YouWin : MonoBehaviour
 {
-    [SerializeField] TMP_Text youWinText;
+    public GameObject youWinCanvas;
     
     void Start() 
     {
-        youWinText.enabled = false;
+        youWinCanvas.SetActive(false);
     }
-    
-    void OnTriggerEnter(Collider other) 
+
+    public void EnableWinText()
     {
-        youWinText.enabled = true;
+        youWinCanvas.SetActive(true);
     }
 }
