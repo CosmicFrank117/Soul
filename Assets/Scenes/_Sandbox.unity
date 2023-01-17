@@ -5008,24 +5008,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7590100741259293958, guid: 414b29cdb4692af49a67f0c872be6411, type: 3}
   m_PrefabInstance: {fileID: 753213434}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &761701059 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3897280166029922477, guid: 5517d8806e0a65246adc2b88fb0e1433, type: 3}
-  m_PrefabInstance: {fileID: 1536554738}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &761701063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761701059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d58b9544c8b465640a21a0579e13539b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  youWinCanvas: {fileID: 0}
 --- !u!1 &762761555
 GameObject:
   m_ObjectHideFlags: 0
@@ -8503,19 +8485,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1182739932162277700, guid: e5856f93c9764a249867dd3f06ec9f93, type: 3}
   m_PrefabInstance: {fileID: 2157907208081508732}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1440376639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440376635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47018fe170c721a4186b0580d138e4d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverCanvas: {fileID: 1292980645}
 --- !u!1 &1444028035
 GameObject:
   m_ObjectHideFlags: 0
@@ -11428,13 +11397,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1440376639, guid: e5856f93c9764a249867dd3f06ec9f93, type: 3}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 1292980645}
     - target: {fileID: 1182739932162277700, guid: e5856f93c9764a249867dd3f06ec9f93, type: 3}
       propertyPath: m_Name
       value: PlayerSoul
-      objectReference: {fileID: 0}
-    - target: {fileID: 3400020979024165771, guid: e5856f93c9764a249867dd3f06ec9f93, type: 3}
-      propertyPath: movementSpeed
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7590100741259293958, guid: e5856f93c9764a249867dd3f06ec9f93, type: 3}
       propertyPath: m_RootOrder
